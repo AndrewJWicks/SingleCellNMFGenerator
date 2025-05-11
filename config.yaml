@@ -1,4 +1,4 @@
-# Configuration for SingleCellNMFGenerator (cleaned for GitHub)
+# Configuration for SingleCellNMFGenerator 
 
 dir_list:
   # Base path for all outputs; relative to project root
@@ -22,13 +22,11 @@ dataset_config:
 # Select which generator to run: "nmf_sampler" or "sc_dist"
 generator_name: "nmf_sampler"
 
-# Global control flags
 generate: true
 train:    true
 load_from_checkpoint: false
 
 generator_config:
-  # Used by nmf_sampler (and by blue_team.py to name the output folder)
   experiment_name: "none"
 
 nmf_sampler_config:
