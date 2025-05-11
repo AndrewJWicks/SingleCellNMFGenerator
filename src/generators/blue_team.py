@@ -160,12 +160,22 @@ def run_singlecell_generator(experiment_name, dp):
 
     # Handle nmf_sampler pipeline
     if gen_name == "nmf_sampler":
-        script_pth = os.path.join(os.path.dirname(__file__), "models", "nmf_sampler.py")
-        cmd = [sys.executable, script_pth, "--dp", dp]
+        script_pth = os.path.join(
+            os.path.dirname(__file__),
+            "models",
+            "nmf_sampler.py"
+        )
+        cmd = [
+            sys.executable,
+            script_pth,
+            "--dp", dp,
+            "--experiment_name", experiment_name
+        ]
         click.echo(f"Running NMF sampler pipeline: {' '.join(cmd)}")
         subprocess.run(cmd, check=True)
         click.echo("nmf_sampler completed.")
         return
+    
     # All other single-cell generators
     GeneratorClass = get_generator_class(gen_name)
     if not GeneratorClass:
