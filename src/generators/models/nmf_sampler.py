@@ -17,9 +17,14 @@ import random
     "--dp",
     type=click.Choice(["all", "nmf", "kmeans", "sampling", "none"]),
     default="all",
-    help="Which DP steps to apply: all, nmf, kmeans, sampling (summaries), or none"
+    help="Which DP steps to apply…"
 )
-def main(dp):
+@click.option(
+    "--experiment_name",
+    default="",
+    help="Subfolder name under synthetic/nmf_sampler/"
+)
+def main(dp, experiment_name):
     # 1) Load configuration
     cfg           = yaml.safe_load(open('config.yaml'))
     nmf_cfg       = cfg['nmf_sampler_config']
@@ -60,8 +65,21 @@ def main(dp):
     np.random.seed(seed)
 
     # Paths
-    train_pth = os.path.join(home, cfg['dataset_config']['train_count_file'])
-    output_h5 = nmf_cfg['output_h5ad']
+    # build dynamic output path
+    ds = cfg["dataset_config"]["name"]
+    outd = os.path.join(
+        home,
+        cfg["dir_list"]["data_splits"],
+        ds,
+        "synthetic",
+        "nmf_sampler",
+        experiment_name or nmf_cfg.get("experiment_name", "")
+    )
+    os.makedirs(outd, exist_ok=True)
+
+    # include dp in the filename
+    filename = f"{ds}_{dp}_synthetic.h5ad"
+    output_h5 = os.path.join(outd, filename)
 
     # 3) Load counts & labels
     labels_all = full_adata.obs[label_col].astype(str).values
