@@ -97,3 +97,17 @@ This pipeline generates synthetic single‐cell gene expression data with option
   `laplace_scale`
 
 Use these flags and config options to customize splits, privacy levels, sampling distributions, and experiment metadata.
+
+### References
+
+1. CAMDA 2025 Health Privacy Challenge
+
+2. Yazar S., Alquicira-Hernández J., Wing K., Senabouth A., Gordon G., Andersen S., Lu Q., Rowson A., Taylor T., Clarke L., Maccora L., Chen C., Cook A., Ye J., Fairfax K., Hewitt A., Powell J. "Single cell eQTL mapping identified cell type specific control of autoimmune disease." Science. (2022) (https://onek1k.org)
+
+3. Lun ATL, McCarthy DJ, Marioni JC. “A step-by-step workflow for low-level analysis of single-cell RNA-seq data with Bioconductor.” F1000Res. (2016)
+
+4. Wolf, F. Alexander, Philipp Angerer, and Fabian J. Theis. "SCANPY: large-scale single-cell gene expression data analysis." Genome biology. (2018)
+
+5. Shao, Chunxuan, and Thomas Höfer. "Robust classification of single-cell transcriptome data by nonnegative matrix factorization." Bioinformatics 33.2 (2017): 235-242.
+
+6. Ran, Xun, et al. "A differentially private nonnegative matrix factorization for recommender system." Information Sciences 592 (2022): 21-35.
